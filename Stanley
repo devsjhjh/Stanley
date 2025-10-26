@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stanley | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* --- Reset --- */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Cairo', sans-serif; scroll-behavior: smooth; }
+
+/* --- Body & Colors --- */
+body {
+  background: linear-gradient(135deg, #0a0a0f, #071b34);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* --- Navbar --- */
+nav {
+  position: fixed;
+  width: 100%;
+  top:0;
+  left:0;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,10,20,0.85);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+nav .logo { font-size: 1.5rem; color: #00aaff; font-weight:bold; }
+nav .menu a {
+  color:#fff; text-decoration:none; margin-left:25px; transition:0.3s;
+}
+nav .menu a:hover { color:#00ffea; transform:scale(1.05); }
+
+/* --- Header / Banner --- */
+header {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background: url('banner.png') center/cover no-repeat;
+  position: relative;
+}
+header::before {
+  content:"";
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+}
+header h1, header p, header a {
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+header h1 { animation-delay: 0.3s; font-size:3rem; color:#00aaff; text-shadow:0 0 20px #00aaff; margin-bottom:10px;}
+header p { animation-delay: 0.6s; font-size:1.3rem; margin-bottom:20px; }
+header a { animation-delay: 0.9s; padding:15px 40px; background:#00aaff; color:#111; border-radius:12px; font-weight:bold; text-decoration:none; transition:0.3s; }
+header a:hover { background:#00ffea; transform:scale(1.05); }
+
+@keyframes fadeInUp {
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* --- Sections --- */
+section {
+  max-width:900px;
+  margin:auto;
+  padding:80px 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s ease-out;
+}
+section.show { opacity:1; transform: translateY(0); }
+
+section h2 {
+  font-size:2rem;
+  margin-bottom:25px;
+  color:#00aaff;
+  text-align:center;
+  text-shadow: 0 0 15px #0077ff;
+}
+
+.about p { line-height:1.6; font-size:1.1rem; text-align: center; }
+
+.info, .skills, .contact {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+}
+.info div, .skills div, .contact a {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding:15px 20px;
+  border-radius:12px;
+  font-weight:bold;
+  transition:0.3s;
+}
+.info div:hover, .skills div:hover, .contact a:hover { 
+  background: rgba(0,170,255,0.2);
+  transform: translateY(-5px);
+}
+.contact a { text-decoration:none; color:#fff; }
+
+/* --- Footer --- */
+footer {
+  text-align:center;
+  padding:30px 20px;
+  background: rgba(10,10,20,0.9);
+  color:#00aaff;
+  margin-top:50px;
+}
+
+/* --- Responsive --- */
+@media (max-width:768px){
+  nav { padding:15px 20px; }
+  nav .menu a { margin-left:15px; }
+  header h1 { font-size:2rem; }
+  header p { font-size:1rem; }
+  section { padding:50px 15px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Stanley</div>
+  <div class="menu">
+    <a href="#about">من أنا</a>
+    <a href="#skills">المهارات</a>
+    <a href="#contact">تواصل</a>
+  </div>
+</nav>
+
+<header>
+  <h1>Stanley</h1>
+  <p>مطور بوتات ديسكورد و مبرمج مواقع | مساهم وموفّر سكربتات</p>
+  <a href="#contact">تواصل معي</a>
+</header>
+
+<section id="about" class="about">
+  <h2>من أنا</h2>
+  <p>أنا ستانلي، مطور شغوف ببناء وتطوير بوتات ديسكورد. أعمل منذ أربع سنوات على تصميم أنظمة تذاكر متقدمة، إدارة صلاحيات، ونظام نقاط (XP) وترتيب الرتب. لست منشئ كل البوتات التي ساهمت بها لكنني قدّمت سكربتات وحلولًا تقنية لعدة مشاريع فعّالة.</p>
+  <div class="info">
+    <div>الاسم المستعار: Stanley</div>
+    <div>المسمى الوظيفي: مطور بوتات ديسكورد & مبرمج مواقع</div>
+    <div>العمر: 16 سنة</div>
+    <div>سنوات الخبرة: 4 سنوات</div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>المهارات</h2>
+  <div class="skills">
+    <div>Discord.js (v13/v14+)</div>
+    <div>Express.js (عند الحاجة)</div>
+    <div>MongoDB + Mongoose</div>
+    <div>نظام Ticket متكامل</div>
+    <div>Buttons & Select Menus</div>
+    <div>XP & ترقيات تلقائية</div>
+    <div>إدارة الأذونات & إخفاء القنوات</div>
+    <div>تنظيم الأكواد & config.js</div>
+    <div>Git & Debugging</div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>تواصل معي</h2>
+  <div class="contact">
+    <a href="https://discord.gg/3w2t" target="_blank">Discord: 3w2t</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Stanley. جميع الحقوق محفوظة.
+</footer>
+
+<script>
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('show'); }});
+}, { threshold:0.2 });
+sections.forEach(section => { observer.observe(section); });
+</script>
+
+</body>
+</html>
