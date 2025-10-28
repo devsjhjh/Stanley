@@ -7,6 +7,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap');
 
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -18,6 +19,7 @@ body {
   color: #f2f2f2;
   font-family: 'Cairo', sans-serif;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /* Header */
@@ -29,22 +31,53 @@ header {
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding-top: 50px;
+  background: linear-gradient(270deg, #0a0a0a, #1a1a1a, #2b2b2b, #0a0a0a);
+  background-size: 800% 800%;
+  animation: gradientBG 15s ease infinite;
 }
 
+/* Logo فوق على البسار مع تأثير متدرج */
 .logo {
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 20px;
+  left: 20px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  color: #0af;
   letter-spacing: 2px;
+  cursor: default;
+  background: linear-gradient(90deg, #ffffff, #aaa, #888, #fff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientText 5s ease infinite;
+  transform: rotate(-5deg);
 }
 
+/* Navigation */
+nav {
+  position: fixed;
+  top: 20px;
+  right: 40px;
+  z-index: 10;
+}
+
+nav a {
+  color: #ccc;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #0af;
+}
+
+/* Intro */
 .intro {
   z-index: 2;
-  animation: fadeInUp 1.5s ease-out;
 }
 
 .intro h1 {
@@ -78,16 +111,19 @@ header {
   animation: fadeInUp 2.5s ease-out;
 }
 
-@keyframes fadeInUp {
-  0% { transform: translateY(50px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
 /* Sections */
 section {
   padding: 80px 10%;
   background: #111;
   text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 section:nth-child(even) {
@@ -149,10 +185,29 @@ footer span {
   color: #aaa;
 }
 
+/* Animations */
+@keyframes fadeInUp {
+  0% { transform: translateY(50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 @media (max-width: 768px) {
   .intro h1 { font-size: 2.5rem; }
   .intro h2 { font-size: 1.2rem; }
   .intro h3 { font-size: 1rem; }
+  nav { right: 20px; }
 }
 </style>
 </head>
@@ -160,6 +215,13 @@ footer span {
 
 <header>
   <div class="logo">Yohan Logo</div>
+  <nav>
+    <a href="#about">من أنا</a>
+    <a href="#skills">المهارات</a>
+    <a href="#experience">الخبرة</a>
+    <a href="#certificates">الشهادات</a>
+    <a href="#contact">تواصل</a>
+  </nav>
   <div class="intro">
     <h1>YOHAN</h1>
     <h1>يوهان</h1>
@@ -202,21 +264,14 @@ footer span {
   <h3>الشهادات والإنجازات</h3>
   <ul>
     <li>شهادة مطور Web Fullstack من منصة خيالية دولية</li>
-    <li>أفضل مشروع بوت ديسكورد لسنة 2024</li>
     <li>شهادة تصميم واجهات المستخدم المتقدمة (UI/UX)</li>
   </ul>
 </section>
 
 <section id="contact">
   <h3>تواصل معي</h3>
-  <a href="#" class="btn">Discord</a>
-  <a href="#" class="btn">GitHub</a>
-  <a href="#" class="btn">Email</a>
+  <a href="https://discord.com/users/3w2t" class="btn">Discord: 3w2t</a>
 </section>
 
 <footer>
-  © جميع الحقوق محفوظة <span>Yohan</span> — 2025
-</footer>
-
-</body>
-</html>
+  © جميع الحقوق محفوظ
