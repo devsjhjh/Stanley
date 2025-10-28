@@ -5,142 +5,161 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yohan Portfolio</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap');
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #2b2b2b);
-    color: #f2f2f2;
-    font-family: 'Cairo', sans-serif;
-    overflow-x: hidden;
-  }
+body {
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #2b2b2b);
+  color: #f2f2f2;
+  font-family: 'Cairo', sans-serif;
+  overflow-x: hidden;
+}
 
-  header {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-  }
+/* Header */
+header {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-  header::before {
-    content: "";
-    background: url('https://cdn.discordapp.com/attachments/1244302433224753205/1431751739868700783/IMG_20251025_064645.png') no-repeat center/cover;
-    position: absolute;
-    inset: 0;
-    opacity: 0.12;
-    filter: grayscale(1);
-    background-attachment: fixed;
-  }
+.logo {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0af;
+  letter-spacing: 2px;
+}
 
-  header img {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    width: 120px;
-    height: auto;
-    opacity: 0.8;
-    mix-blend-mode: screen;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-  }
+.intro {
+  z-index: 2;
+  animation: fadeInUp 1.5s ease-out;
+}
 
-  header img:hover {
-    transform: scale(1.1) rotate(-5deg);
-    opacity: 1;
-  }
+.intro h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  background: linear-gradient(to right, #f0f0f0, #a0a0a0);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+  animation: fadeInUp 1.5s ease-out;
+}
 
-  .intro {
-    z-index: 2;
-    animation: fadeInUp 1.5s ease-out;
-  }
+.intro h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 8px;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #aaa, #000);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 5px rgba(0,0,0,0.3);
+  animation: fadeInUp 2s ease-out;
+}
 
-  .intro h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 4rem;
-    background: linear-gradient(to right, #f0f0f0, #a0a0a0);
-    -webkit-background-clip: text;
-    color: transparent;
-    letter-spacing: 3px;
-    text-shadow: 0 0 10px rgba(255,255,255,0.2);
-    animation: fadeInUp 1.5s ease-out;
-  }
+.intro h3 {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-top: 5px;
+  font-weight: 400;
+  animation: fadeInUp 2.5s ease-out;
+}
 
-  .intro h2 {
-    font-size: 1.8rem;
-    font-weight: 500;
-    margin-top: 8px;
-    letter-spacing: 1px;
-    background: linear-gradient(90deg, #aaa, #000);
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 5px rgba(0,0,0,0.3);
-    animation: fadeInUp 2s ease-out;
-  }
+@keyframes fadeInUp {
+  0% { transform: translateY(50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
 
-  .intro h3 {
-    font-size: 1.2rem;
-    color: #ccc;
-    margin-top: 5px;
-    font-weight: 400;
-    animation: fadeInUp 2.5s ease-out;
-  }
+/* Sections */
+section {
+  padding: 80px 10%;
+  background: #111;
+  text-align: center;
+}
 
-  @keyframes fadeInUp {
-    0% { transform: translateY(50px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-  }
+section:nth-child(even) {
+  background: #1a1a1a;
+}
 
-  section {
-    padding: 80px 10%;
-    background: #111;
-    text-align: center;
-  }
+section h3 {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  color: #fff;
+}
 
-  section h3 {
-    font-size: 2.2rem;
-    margin-bottom: 25px;
-    color: #fff;
-  }
+section p, section ul {
+  color: #ccc;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-  section p {
-    color: #ccc;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    max-width: 700px;
-    margin: 0 auto;
-  }
+ul {
+  list-style: none;
+}
 
-  footer {
-    background: #0a0a0a;
-    text-align: center;
-    padding: 30px;
-    color: #777;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-  }
+li::before {
+  content: "• ";
+  color: #0af;
+}
 
-  footer span {
-    color: #aaa;
-  }
+/* Buttons */
+.btn {
+  display: inline-block;
+  margin: 15px 10px 0 10px;
+  padding: 12px 25px;
+  background: #0af;
+  color: #111;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
 
-  @media (max-width: 768px) {
-    .intro h1 { font-size: 2.5rem; }
-    .intro h2 { font-size: 1.2rem; }
-    .intro h3 { font-size: 1rem; }
-  }
+.btn:hover {
+  background: #08c;
+}
+
+/* Footer */
+footer {
+  background: #0a0a0a;
+  text-align: center;
+  padding: 30px;
+  color: #777;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+footer span {
+  color: #aaa;
+}
+
+@media (max-width: 768px) {
+  .intro h1 { font-size: 2.5rem; }
+  .intro h2 { font-size: 1.2rem; }
+  .intro h3 { font-size: 1rem; }
+}
 </style>
 </head>
 <body>
 
 <header>
-  <img src="https://cdn.discordapp.com/attachments/1244302433224753205/1431960445186943016/IMG_20251027_233056.jpg" alt="Yohan Logo">
+  <div class="logo">Yohan Logo</div>
   <div class="intro">
     <h1>YOHAN</h1>
     <h1>يوهان</h1>
@@ -159,10 +178,40 @@
 
 <section id="skills">
   <h3>المهارات</h3>
-  <p>
-    JavaScript, HTML, CSS, Node.js, Discord.js, MongoDB<br>
-    تطوير واجهات عصرية، أنظمة XP متقدمة، إدارة صلاحيات البوتات، وتصميم مواقع شخصية.
-  </p>
+  <ul>
+    <li>JavaScript, HTML, CSS, Node.js, Discord.js, MongoDB</li>
+    <li>تطوير واجهات عصرية وتصميم مواقع شخصية متقدمة</li>
+    <li>أنظمة XP متطورة، إدارة صلاحيات البوتات</li>
+    <li>تصميم قواعد بيانات ديناميكية وأنظمة API قوية</li>
+    <li>React, Vue.js, Express.js, Socket.io</li>
+    <li>تصميم أنظمة أتمتة وإدارة سير العمل (Workflow Automation)</li>
+  </ul>
+</section>
+
+<section id="experience">
+  <h3>الخبرة العملية</h3>
+  <ul>
+    <li>تطوير بوتات ديسكورد احترافية لأكثر من 5 سيرفرات كبيرة</li>
+    <li>إنشاء منصات ويب ديناميكية لشركات صغيرة ومتوسطة</li>
+    <li>تصميم لوحات تحكم متقدمة مع تحليلات وتقارير</li>
+    <li>المساهمة في مشاريع Open Source لتطوير مكتبات Node.js</li>
+  </ul>
+</section>
+
+<section id="certificates">
+  <h3>الشهادات والإنجازات</h3>
+  <ul>
+    <li>شهادة مطور Web Fullstack من منصة خيالية دولية</li>
+    <li>أفضل مشروع بوت ديسكورد لسنة 2024</li>
+    <li>شهادة تصميم واجهات المستخدم المتقدمة (UI/UX)</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h3>تواصل معي</h3>
+  <a href="#" class="btn">Discord</a>
+  <a href="#" class="btn">GitHub</a>
+  <a href="#" class="btn">Email</a>
 </section>
 
 <footer>
