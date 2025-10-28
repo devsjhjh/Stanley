@@ -3,255 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stanley - مطور مواقع وبوتات</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<title>Yohan Portfolio</title>
 <style>
-  * {margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth;}
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   body {
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #2b2b2b);
+    color: #f2f2f2;
     font-family: 'Cairo', sans-serif;
-    background: #0e0e0e;
-    color: #e6e6e6;
     overflow-x: hidden;
   }
 
-  /* Navbar */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: rgba(20,20,20,0.97);
-    display: flex;
-    justify-content: center;
-    padding: 15px 0;
-    z-index: 100;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-    backdrop-filter: blur(5px);
-  }
-  nav a {
-    margin: 0 20px;
-    text-decoration: none;
-    color: #ccc;
-    font-weight: 600;
-    transition: 0.3s;
-    position: relative;
-  }
-  nav a::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background: #ff5555;
-    transition: 0.3s;
-  }
-  nav a:hover::after {
-    width: 100%;
-  }
-  nav a:hover { color: #ff5555; }
-
-  /* Header */
   header {
+    position: relative;
     height: 100vh;
-    background: linear-gradient(180deg, rgba(0,0,0,0.9), #111),
-      url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 20px;
-    position: relative;
+    overflow: hidden;
   }
-  header::after {
+
+  header::before {
     content: "";
+    background: url('https://cdn.discordapp.com/attachments/1244302433224753205/1431751739868700783/IMG_20251025_064645.png') no-repeat center/cover;
     position: absolute;
-    top:0; left:0; width:100%; height:100%;
-    background: radial-gradient(circle at bottom, rgba(255,255,255,0.06), transparent 70%);
-    pointer-events: none;
+    inset: 0;
+    opacity: 0.12;
+    filter: grayscale(1);
+    background-attachment: fixed;
   }
-  header h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 2px;
-    z-index: 2;
-    animation: fadeInDown 1.5s ease-out;
-  }
-  header p {
-    font-size: 1.3rem;
-    color: #ccc;
-    margin-top: 20px;
-    z-index: 2;
-    max-width: 650px;
-    animation: fadeIn 2s ease-in;
-  }
-  @keyframes fadeInDown {from {opacity:0; transform:translateY(-40px);} to {opacity:1; transform:translateY(0);}}
-  @keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
 
-  /* Sections */
-  section {
-    max-width: 1000px;
-    margin: auto;
-    padding: 100px 25px;
-    position: relative;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease-out;
+  header img {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 120px;
+    height: auto;
+    opacity: 0.8;
+    mix-blend-mode: screen;
+    transition: transform 0.4s ease, opacity 0.4s ease;
   }
-  section.active {
+
+  header img:hover {
+    transform: scale(1.1) rotate(-5deg);
     opacity: 1;
-    transform: translateY(0);
-  }
-  section h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #ff5555;
-    margin-bottom: 50px;
-    position: relative;
-  }
-  section h2::after {
-    content: "";
-    display: block;
-    width: 100px;
-    height: 3px;
-    background: #ff5555;
-    margin: 10px auto 0;
-    border-radius: 3px;
   }
 
-  .card {
-    background: #1b1b1b;
-    border: 1px solid #222;
-    padding: 35px;
-    border-radius: 18px;
-    margin-bottom: 30px;
-    transition: all 0.5s ease;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-  }
-  .card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(255,85,85,0.35);
-    border-color: #ff5555;
+  .intro {
+    z-index: 2;
+    animation: fadeInUp 1.5s ease-out;
   }
 
-  .skills {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 25px;
+  .intro h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    background: linear-gradient(to right, #f0f0f0, #a0a0a0);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    animation: fadeInUp 1.5s ease-out;
   }
 
-  /* Contact button */
-  .btn {
-    display: inline-block;
-    padding: 14px 28px;
-    margin: 15px 5px;
-    border-radius: 12px;
-    background: linear-gradient(45deg, #ff5555, #ff8888);
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
-    box-shadow: 0 4px 10px rgba(255,85,85,0.4);
-  }
-  .btn:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(255,85,85,0.6);
+  .intro h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-top: 8px;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #aaa, #000);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0,0,0,0.3);
+    animation: fadeInUp 2s ease-out;
   }
 
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 50px 25px;
+  .intro h3 {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-top: 5px;
+    font-weight: 400;
+    animation: fadeInUp 2.5s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  section {
+    padding: 80px 10%;
     background: #111;
-    border-top: 1px solid #222;
-    color: #777;
+    text-align: center;
   }
 
-  /* Responsive */
-  @media (max-width: 600px){
-    header h1 {font-size:2.2rem;}
-    header p {font-size:1rem; max-width:90%;}
-    section {padding:70px 15px;}
+  section h3 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: #fff;
+  }
+
+  section p {
+    color: #ccc;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  footer {
+    background: #0a0a0a;
+    text-align: center;
+    padding: 30px;
+    color: #777;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  footer span {
+    color: #aaa;
+  }
+
+  @media (max-width: 768px) {
+    .intro h1 { font-size: 2.5rem; }
+    .intro h2 { font-size: 1.2rem; }
+    .intro h3 { font-size: 1rem; }
   }
 </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav>
-    <a href="#about">من أنا</a>
-    <a href="#skills">المهارات</a>
-    <a href="#contact">التواصل</a>
-  </nav>
+<header>
+  <img src="https://cdn.discordapp.com/attachments/1244302433224753205/1431960445186943016/IMG_20251027_233056.jpg" alt="Yohan Logo">
+  <div class="intro">
+    <h1>YOHAN</h1>
+    <h1>يوهان</h1>
+    <h2>Web & Bot Developer</h2>
+    <h3>يوهان - مبرمج ومطور مواقع وبوتات ديسكورد</h3>
+  </div>
+</header>
 
-  <!-- Header -->
-  <header>
-    <h1>Stanley</h1>
-    <p>مطور مواقع وبوتات ديسكورد بخبرة عملية طويلة — أصنع أنظمة متكاملة وسريعة وموثوقة لكل سيرفر أو مشروع.</p>
-  </header>
+<section id="about">
+  <h3>من أنا</h3>
+  <p>
+    أنا <strong>يوهان</strong>، مبرمج مواقع ومطور بوتات ديسكورد بخبرة تمتد لسنوات في بناء الأنظمة الذكية
+    وتطوير الواجهات المتقدمة. أركز على تصميم أكواد نظيفة، مرنة، وسريعة الأداء تعكس مستوى احترافي فني وتقني.
+  </p>
+</section>
 
-  <!-- About -->
-  <section id="about">
-    <h2>من أنا</h2>
-    <div class="card">
-      <p>
-        أنا <strong>ستانلي</strong>، مطور شغوف ببناء وتطوير بوتات ديسكورد ومواقع ويب متكاملة. أعمل على تصميم أنظمة تذاكر، إدارة صلاحيات، نظام نقاط وترتيب الرتب، وأطور حلولاً مخصصة لكل سيرفر أو مشروع أتعامل معه.  
-      </p>
-    </div>
-  </section>
+<section id="skills">
+  <h3>المهارات</h3>
+  <p>
+    JavaScript, HTML, CSS, Node.js, Discord.js, MongoDB<br>
+    تطوير واجهات عصرية، أنظمة XP متقدمة، إدارة صلاحيات البوتات، وتصميم مواقع شخصية.
+  </p>
+</section>
 
-  <!-- Skills -->
-  <section id="skills">
-    <h2>المهارات</h2>
-    <div class="skills">
-      <div class="card">
-        <h3>المكتبات</h3>
-        <p>Discord.js (v13/v14+), Express</p>
-      </div>
-      <div class="card">
-        <h3>قواعد البيانات</h3>
-        <p>MongoDB + Mongoose</p>
-      </div>
-      <div class="card">
-        <h3>بيئة التطوير</h3>
-        <p>Replit، Git، Debugging</p>
-      </div>
-      <div class="card">
-        <h3>أنظمة متقدمة</h3>
-        <p>تذاكر، XP، أزرار، قوائم، Embeds متطورة</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>التواصل</h2>
-    <div class="card" style="text-align:center;">
-      <p>Discord: <strong>3w2t</strong></p>
-      <a href="https://discord.com/users/3w2t" target="_blank" class="btn">تواصل عبر Discord</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 <strong>Stanley</strong> | جميع الحقوق محفوظة</p>
-  </footer>
-
-<script>
-  // Scroll reveal for sections
-  const sections = document.querySelectorAll('section');
-  const revealSection = () => {
-    const triggerBottom = window.innerHeight / 1.2;
-    sections.forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top;
-      if(sectionTop < triggerBottom){
-        section.classList.add('active');
-      }
-    });
-  };
-  window.addEventListener('scroll', revealSection);
-  window.addEventListener('load', revealSection);
-</script>
+<footer>
+  © جميع الحقوق محفوظة <span>Yohan</span> — 2025
+</footer>
 
 </body>
 </html>
