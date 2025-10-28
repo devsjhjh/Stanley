@@ -13,7 +13,7 @@ html { scroll-behavior: smooth; }
 body { background:#0d0d0d; color:#f2f2f2; font-family:'Cairo', sans-serif; overflow-x:hidden; }
 
 /* خلفية موحدة لكل الصفحة */
-header, section {
+header, section, footer {
   background:#0d0d0d;
 }
 
@@ -28,13 +28,13 @@ header {
   text-align: center;
 }
 
-/* Logo أكبر قليلاً */
+/* Logo أكبر بشكل واضح */
 .logo {
   position: absolute;
-  top: 120px;
+  top: 150px; /* أنزلناه تحت شوي */
   left: 20px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.2rem;
+  font-size: 2rem; /* كبرناه */
   font-weight: bold;
   letter-spacing: 1px;
   cursor: default;
@@ -63,7 +63,7 @@ nav a:hover { color:#0af; }
 .intro h2 { font-size:1.8rem; font-weight:500; margin-top:8px; letter-spacing:1px; background:linear-gradient(90deg,#aaa,#000); -webkit-background-clip:text; color:transparent; text-shadow:0 0 5px rgba(0,0,0,0.3); animation:fadeInUp 2s ease-out; }
 .intro h3 { font-size:1.2rem; color:#ccc; margin-top:5px; font-weight:400; animation:fadeInUp 2.5s ease-out; }
 
-/* Sections بدون فواصل */
+/* Sections بدون أي فواصل */
 section {
   padding:80px 10%;
   text-align:center;
@@ -80,10 +80,6 @@ li::before { content:"• "; color:#0af; }
 /* Buttons */
 .btn { display:inline-block; margin:15px 10px 0 10px; padding:12px 25px; background:#0af; color:#111; font-weight:bold; border-radius:8px; text-decoration:none; transition:background 0.3s ease; }
 .btn:hover { background:#08c; }
-
-/* Footer */
-footer { background:#0d0d0d; text-align:center; padding:30px; color:#777; font-size:0.9rem; letter-spacing:1px; }
-footer span { color:#aaa; }
 
 /* Animations */
 @keyframes fadeInUp {0%{transform:translateY(50px);opacity:0;}100%{transform:translateY(0);opacity:1;}}
