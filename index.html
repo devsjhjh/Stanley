@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stanley - المطور</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth;}
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #0a0a0a;
+      color: #f5f5f5;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      height: 100vh;
+      background: linear-gradient(180deg, rgba(0,0,0,0.7), #000),
+        url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at bottom, rgba(255,0,0,0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 2px;
+      z-index: 2;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-top: 10px;
+      z-index: 2;
+      max-width: 500px;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    /* Sections */
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 80px 25px;
+      position: relative;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 1.6rem;
+      color: #ff3333;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #ff3333;
+      margin: 10px auto 0;
+      border-radius: 3px;
+    }
+
+    .card {
+      background: #111;
+      border: 1px solid #222;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      transition: 0.3s;
+    }
+    .card:hover {
+      border-color: #ff3333;
+      transform: translateY(-5px);
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      background: #111;
+      border-top: 1px solid #222;
+      color: #777;
+    }
+
+    footer a {
+      color: #ff3333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      color: #ff5555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Stanley</h1>
+    <p>مطور مواقع وبوتات ديسكورد بخبرة تمتد لأربع سنوات — أصنع أنظمة متكاملة وسريعة وحديثة بخطوات دقيقة واحترافية.</p>
+  </header>
+
+  <section id="about">
+    <h2>من أنا</h2>
+    <div class="card">
+      <p>
+        أنا <strong>ستانلي</strong>، مطور شغوف ببناء وتطوير بوتات ديسكورد ومواقع ويب متكاملة. أعمل على تصميم أنظمة تذاكر، إدارة صلاحيات، 
+        نظام نقاط وترتيب الرتب، وأطور حلولاً مخصصة لكل سيرفر أو مشروع أتعامل معه.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>المهارات</h2>
+    <div class="skills">
+      <div class="card">
+        <h3>مكتبات</h3>
+        <p>Discord.js (v13/v14+), Express</p>
+      </div>
+      <div class="card">
+        <h3>قواعد البيانات</h3>
+        <p>MongoDB + Mongoose</p>
+      </div>
+      <div class="card">
+        <h3>بيئة التطوير</h3>
+        <p>Replit، Git، Debugging</p>
+      </div>
+      <div class="card">
+        <h3>أنظمة متقدمة</h3>
+        <p>تذاكر، XP، أزرار، قوائم، Embeds متطورة</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>التواصل</h2>
+    <div class="card" style="text-align:center;">
+      <p>Discord: <strong>3w2t</strong></p>
+      <p>البريد: <a href="#">stanley.dev@example.com</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 <strong>Stanley</strong> | جميع الحقوق محفوظة</p>
+  </footer>
+
+</body>
+  </html>
