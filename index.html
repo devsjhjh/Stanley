@@ -8,212 +8,112 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap');
 
 /* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { 
+  background:#0d0d0d; 
+  color:#f2f2f2; 
+  font-family:'Cairo', sans-serif; 
+  overflow-x:hidden;
 }
 
-html {
-  scroll-behavior: smooth; /* Smooth scroll عند الضغط على الروابط */
-}
-
-body {
-  background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #2b2b2b);
-  color: #f2f2f2;
-  font-family: 'Cairo', sans-serif;
-  overflow-x: hidden;
-}
-
-/* Header */
+/* Header / Hero Banner */
 header {
   position: relative;
-  min-height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-top: 60px;
   background: linear-gradient(270deg, #0a0a0a, #1a1a1a, #2b2b2b, #0a0a0a);
   background-size: 800% 800%;
   animation: gradientBG 15s ease infinite;
-  z-index: 1;
+  overflow: hidden;
 }
 
-/* Logo فوق على البسار مصغّر */
+/* Blur overlay يخفي الحواجز تدريجيًا */
+header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to bottom, rgba(13,13,13,0), rgba(13,13,13,1));
+  backdrop-filter: blur(10px);
+  z-index: 5;
+}
+
+/* Logo منخفض أكثر */
 .logo {
   position: absolute;
-  top: 25px;
+  top: 110px; /* نزلناه أكثر */
   left: 20px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   cursor: default;
   background: linear-gradient(90deg, #ffffff, #aaa, #888, #fff);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   color: transparent;
   animation: gradientText 5s ease infinite;
-  transform: rotate(-3deg);
-  z-index: 15;
+  transform: rotate(-2deg);
+  z-index: 20;
 }
 
 /* Navigation */
 nav {
   position: fixed;
-  top: 25px;
+  top: 20px;
   right: 40px;
-  z-index: 10;
+  z-index: 20;
   font-size: 0.9rem;
 }
-
-nav a {
-  color: #ccc;
-  margin: 0 12px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #0af;
-}
+nav a { color:#ccc; margin:0 12px; text-decoration:none; font-weight:bold; transition:color 0.3s ease; }
+nav a:hover { color:#0af; }
 
 /* Intro */
-.intro {
-  z-index: 2;
-}
+.intro h1 { font-family:'Orbitron',sans-serif; font-size:4rem; background:linear-gradient(to right,#f0f0f0,#a0a0a0); -webkit-background-clip:text; color:transparent; letter-spacing:3px; text-shadow:0 0 10px rgba(255,255,255,0.2); animation:fadeInUp 1.5s ease-out; }
+.intro h2 { font-size:1.8rem; font-weight:500; margin-top:8px; letter-spacing:1px; background:linear-gradient(90deg,#aaa,#000); -webkit-background-clip:text; color:transparent; text-shadow:0 0 5px rgba(0,0,0,0.3); animation:fadeInUp 2s ease-out; }
+.intro h3 { font-size:1.2rem; color:#ccc; margin-top:5px; font-weight:400; animation:fadeInUp 2.5s ease-out; }
 
-.intro h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 4rem;
-  background: linear-gradient(to right, #f0f0f0, #a0a0a0);
-  -webkit-background-clip: text;
-  color: transparent;
-  letter-spacing: 3px;
-  text-shadow: 0 0 10px rgba(255,255,255,0.2);
-  animation: fadeInUp 1.5s ease-out;
-}
-
-.intro h2 {
-  font-size: 1.8rem;
-  font-weight: 500;
-  margin-top: 8px;
-  letter-spacing: 1px;
-  background: linear-gradient(90deg, #aaa, #000);
-  -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 5px rgba(0,0,0,0.3);
-  animation: fadeInUp 2s ease-out;
-}
-
-.intro h3 {
-  font-size: 1.2rem;
-  color: #ccc;
-  margin-top: 5px;
-  font-weight: 400;
-  animation: fadeInUp 2.5s ease-out;
-}
-
-/* Sections */
+/* Sections بدون فواصل */
 section {
-  padding: 80px 10%;
-  background: #111;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
+  padding:100px 10%;
+  text-align:center;
+  opacity:0;
+  transform:translateY(30px);
   transition: opacity 1s ease, transform 1s ease;
+  background:linear-gradient(180deg, rgba(13,13,13,1) 0%, rgba(20,20,20,1) 100%);
+  backdrop-filter: blur(10px);
 }
+section.visible { opacity:1; transform:translateY(0); }
 
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-section:nth-child(even) {
-  background: #1a1a1a;
-}
-
-section h3 {
-  font-size: 2.2rem;
-  margin-bottom: 25px;
-  color: #fff;
-}
-
-section p, section ul {
-  color: #ccc;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-ul {
-  list-style: none;
-}
-
-li::before {
-  content: "• ";
-  color: #0af;
-}
+section h3 { font-size:2.2rem; margin-bottom:25px; color:#fff; }
+section p, section ul { color:#ccc; font-size:1.1rem; line-height:1.8; max-width:800px; margin:0 auto; text-align:center; }
+ul { list-style:none; }
+li::before { content:"• "; color:#0af; }
 
 /* Buttons */
-.btn {
-  display: inline-block;
-  margin: 15px 10px 0 10px;
-  padding: 12px 25px;
-  background: #0af;
-  color: #111;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.btn:hover {
-  background: #08c;
-}
+.btn { display:inline-block; margin:15px 10px 0 10px; padding:12px 25px; background:#0af; color:#111; font-weight:bold; border-radius:8px; text-decoration:none; transition:background 0.3s ease; }
+.btn:hover { background:#08c; }
 
 /* Footer */
-footer {
-  background: #0a0a0a;
-  text-align: center;
-  padding: 30px;
-  color: #777;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-}
-
-footer span {
-  color: #aaa;
-}
+footer { background:#0a0a0a; text-align:center; padding:30px; color:#777; font-size:0.9rem; letter-spacing:1px; }
+footer span { color:#aaa; }
 
 /* Animations */
-@keyframes fadeInUp {
-  0% { transform: translateY(50px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
+@keyframes fadeInUp {0%{transform:translateY(50px);opacity:0;}100%{transform:translateY(0);opacity:1;}}
+@keyframes gradientText {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+@keyframes gradientBG {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
-@keyframes gradientText {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@media (max-width: 768px) {
-  .intro h1 { font-size: 2.5rem; }
-  .intro h2 { font-size: 1.2rem; }
-  .intro h3 { font-size: 1rem; }
-  nav { right: 20px; font-size: 0.8rem; }
+@media (max-width:768px){
+  .intro h1{font-size:2.5rem;}
+  .intro h2{font-size:1.2rem;}
+  .intro h3{font-size:1rem;}
+  nav{right:20px;font-size:0.8rem;}
 }
 </style>
 </head>
@@ -238,10 +138,7 @@ footer span {
 
 <section id="about">
   <h3>من أنا</h3>
-  <p>
-    أنا <strong>يوهان</strong>، مبرمج مواقع ومطور بوتات ديسكورد بخبرة تمتد لسنوات في بناء الأنظمة الذكية
-    وتطوير الواجهات المتقدمة. أركز على تصميم أكواد نظيفة، مرنة، وسريعة الأداء تعكس مستوى احترافي فني وتقني.
-  </p>
+  <p>أنا <strong>يوهان</strong>، مبرمج مواقع ومطور بوتات ديسكورد بخبرة تمتد لسنوات في بناء الأنظمة الذكية وتطوير الواجهات المتقدمة. أركز على تصميم أكواد نظيفة، مرنة، وسريعة الأداء تعكس مستوى احترافي فني وتقني.</p>
 </section>
 
 <section id="skills">
@@ -268,10 +165,7 @@ footer span {
 
 <section id="certificates">
   <h3>الشهادات والإنجازات</h3>
-  <ul>
-    <li>شهادة مطور Web Fullstack من منصة خيالية دولية</li>
-    <li>شهادة تصميم واجهات المستخدم المتقدمة (UI/UX)</li>
-  </ul>
+  <p>قريبًا بأذن الله</p>
 </section>
 
 <section id="contact">
@@ -284,17 +178,14 @@ footer span {
 </footer>
 
 <script>
-// ظهور الأقسام مع scroll
 const sections = document.querySelectorAll('section');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
   });
 }, { threshold: 0.1 });
-
 sections.forEach(section => observer.observe(section));
 </script>
+
 </body>
 </html>
