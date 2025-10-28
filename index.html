@@ -13,9 +13,7 @@ html { scroll-behavior: smooth; }
 body { background:#0d0d0d; color:#f2f2f2; font-family:'Cairo', sans-serif; overflow-x:hidden; }
 
 /* خلفية موحدة لكل الصفحة */
-header, section, footer {
-  background:#0d0d0d;
-}
+header, section, footer { background:#0d0d0d; }
 
 /* Header / Hero Banner سلس */
 header {
@@ -31,10 +29,10 @@ header {
 /* Logo أصغر وأعلى شوي */
 .logo {
   position: absolute;
-  top: 150px; /* رفعناه */
+  top: 80px; /* أعلى شوي */
   left: 20px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.2rem; /* صغرناه شوي */
+  font-size: 1.1rem; /* صغرناه */
   font-weight: bold;
   letter-spacing: 1px;
   cursor: default;
@@ -166,6 +164,9 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 sections.forEach(section => observer.observe(section));
+
+// عند الدخول، يروح مباشرة للبنر
+window.onload = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 </script>
 
 </body>
