@@ -5,56 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yohan Portfolio</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
 
-/* Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body { 
-  background:#0d0d0d; 
-  color:#f2f2f2; 
-  font-family:'Cairo', sans-serif; 
-  overflow-x:hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-/* Header / Hero Banner */
-header {
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #000, #111, #1a1a1a);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* تغبيش ناعم بين الأقسام */
+section {
+  padding: 120px 8%;
   position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(270deg, #0a0a0a, #1a1a1a, #2b2b2b, #0a0a0a);
-  background-size: 800% 800%;
-  animation: gradientBG 15s ease infinite;
-  overflow: hidden;
-}
-
-/* Blur overlay يخفي الحواجز تدريجيًا */
-header::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 150px;
-  background: linear-gradient(to bottom, rgba(13,13,13,0), rgba(13,13,13,1));
   backdrop-filter: blur(10px);
-  z-index: 5;
 }
 
-/* Logo منخفض أكثر */
+/* الهيدر */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.85);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 8%;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+}
+
+/* اللوقو */
 .logo {
   position: absolute;
-  top: 110px; /* نزلناه أكثر */
-  left: 20px;
+  top: 120px; /* نزّل أكثر */
+  left: 25px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: bold;
   letter-spacing: 1px;
   cursor: default;
-  background: linear-gradient(90deg, #ffffff, #aaa, #888, #fff);
+  background: linear-gradient(90deg, #fff, #aaa, #888, #fff);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   color: transparent;
@@ -63,57 +61,69 @@ header::after {
   z-index: 20;
 }
 
-/* Navigation */
-nav {
-  position: fixed;
-  top: 20px;
-  right: 40px;
-  z-index: 20;
-  font-size: 0.9rem;
+/* حركة التدرج */
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
-nav a { color:#ccc; margin:0 12px; text-decoration:none; font-weight:bold; transition:color 0.3s ease; }
-nav a:hover { color:#0af; }
 
-/* Intro */
-.intro h1 { font-family:'Orbitron',sans-serif; font-size:4rem; background:linear-gradient(to right,#f0f0f0,#a0a0a0); -webkit-background-clip:text; color:transparent; letter-spacing:3px; text-shadow:0 0 10px rgba(255,255,255,0.2); animation:fadeInUp 1.5s ease-out; }
-.intro h2 { font-size:1.8rem; font-weight:500; margin-top:8px; letter-spacing:1px; background:linear-gradient(90deg,#aaa,#000); -webkit-background-clip:text; color:transparent; text-shadow:0 0 5px rgba(0,0,0,0.3); animation:fadeInUp 2s ease-out; }
-.intro h3 { font-size:1.2rem; color:#ccc; margin-top:5px; font-weight:400; animation:fadeInUp 2.5s ease-out; }
-
-/* Sections بدون فواصل */
-section {
-  padding:100px 10%;
-  text-align:center;
-  opacity:0;
-  transform:translateY(30px);
-  transition: opacity 1s ease, transform 1s ease;
-  background:linear-gradient(180deg, rgba(13,13,13,1) 0%, rgba(20,20,20,1) 100%);
-  backdrop-filter: blur(10px);
+/* القوائم */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 35px;
 }
-section.visible { opacity:1; transform:translateY(0); }
 
-section h3 { font-size:2.2rem; margin-bottom:25px; color:#fff; }
-section p, section ul { color:#ccc; font-size:1.1rem; line-height:1.8; max-width:800px; margin:0 auto; text-align:center; }
-ul { list-style:none; }
-li::before { content:"• "; color:#0af; }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
 
-/* Buttons */
-.btn { display:inline-block; margin:15px 10px 0 10px; padding:12px 25px; background:#0af; color:#111; font-weight:bold; border-radius:8px; text-decoration:none; transition:background 0.3s ease; }
-.btn:hover { background:#08c; }
+nav a:hover {
+  color: #0af;
+}
 
-/* Footer */
-footer { background:#0a0a0a; text-align:center; padding:30px; color:#777; font-size:0.9rem; letter-spacing:1px; }
-footer span { color:#aaa; }
+/* البنر */
+#home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(180deg, #111, #222, #111);
+  text-align: center;
+  font-size: 2.4rem;
+  letter-spacing: 2px;
+}
 
-/* Animations */
-@keyframes fadeInUp {0%{transform:translateY(50px);opacity:0;}100%{transform:translateY(0);opacity:1;}}
-@keyframes gradientText {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-@keyframes gradientBG {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+/* باقي الأقسام */
+#about, #skills, #contact {
+  background: linear-gradient(180deg, #111, #1a1a1a, #111);
+}
 
-@media (max-width:768px){
-  .intro h1{font-size:2.5rem;}
-  .intro h2{font-size:1.2rem;}
-  .intro h3{font-size:1rem;}
-  nav{right:20px;font-size:0.8rem;}
+/* قسم "قريبًا بأذن الله" */
+#certificates {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #0af;
+  color: #111;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.btn:hover {
+  background: #08c;
 }
 </style>
 </head>
@@ -122,70 +132,46 @@ footer span { color:#aaa; }
 <header>
   <div class="logo">Yohan Logo</div>
   <nav>
-    <a href="#about">من أنا</a>
-    <a href="#skills">المهارات</a>
-    <a href="#experience">الخبرة</a>
-    <a href="#certificates">الشهادات</a>
-    <a href="#contact">تواصل</a>
+    <ul>
+      <li><a href="#home">الرئيسية</a></li>
+      <li><a href="#about">من أنا</a></li>
+      <li><a href="#skills">المهارات</a></li>
+      <li><a href="#certificates">الشهادات</a></li>
+      <li><a href="#contact">التواصل</a></li>
+    </ul>
   </nav>
-  <div class="intro">
-    <h1>YOHAN</h1>
-    <h1>يوهان</h1>
-    <h2>Web & Bot Developer</h2>
-    <h3>يوهان - مبرمج ومطور مواقع وبوتات ديسكورد</h3>
-  </div>
 </header>
 
+<section id="home">
+  <h1>Yohan — Web & Bot Developer</h1>
+</section>
+
 <section id="about">
-  <h3>من أنا</h3>
-  <p>أنا <strong>يوهان</strong>، مبرمج مواقع ومطور بوتات ديسكورد بخبرة تمتد لسنوات في بناء الأنظمة الذكية وتطوير الواجهات المتقدمة. أركز على تصميم أكواد نظيفة، مرنة، وسريعة الأداء تعكس مستوى احترافي فني وتقني.</p>
+  <h2>من أنا</h2>
+  <p>مطور محترف بخبرة واسعة في تطوير المواقع والبوتات، أمتلك القدرة على بناء أنظمة متكاملة بتصاميم حديثة وتجارب مستخدم فريدة. أسعى دائمًا لتقديم أعلى مستوى من الاحتراف والجودة في كل مشروع أعمل عليه.</p>
 </section>
 
 <section id="skills">
-  <h3>المهارات</h3>
+  <h2>المهارات</h2>
   <ul>
-    <li>JavaScript, HTML, CSS, Node.js, Discord.js, MongoDB</li>
-    <li>تطوير واجهات عصرية وتصميم مواقع شخصية متقدمة</li>
-    <li>أنظمة XP متطورة، إدارة صلاحيات البوتات</li>
-    <li>تصميم قواعد بيانات ديناميكية وأنظمة API قوية</li>
-    <li>React, Vue.js, Express.js, Socket.io</li>
-    <li>تصميم أنظمة أتمتة وإدارة سير العمل (Workflow Automation)</li>
-  </ul>
-</section>
-
-<section id="experience">
-  <h3>الخبرة العملية</h3>
-  <ul>
-    <li>تطوير بوتات ديسكورد احترافية لأكثر من 5 سيرفرات كبيرة</li>
-    <li>إنشاء منصات ويب ديناميكية لشركات صغيرة ومتوسطة</li>
-    <li>تصميم لوحات تحكم متقدمة مع تحليلات وتقارير</li>
-    <li>المساهمة في مشاريع Open Source لتطوير مكتبات Node.js</li>
+    <li>JavaScript / Node.js / HTML / CSS / React</li>
+    <li>Discord Bot Development</li>
+    <li>Backend Integration / REST APIs</li>
+    <li>Responsive Web Design</li>
+    <li>UI/UX Implementation</li>
+    <li>Performance Optimization</li>
   </ul>
 </section>
 
 <section id="certificates">
-  <h3>الشهادات والإنجازات</h3>
-  <p>قريبًا بأذن الله</p>
+  <h2>الشهادات</h2>
+  <p>قريبًا بإذن الله</p>
 </section>
 
 <section id="contact">
   <h3>تواصل معي</h3>
   <a href="https://discord.com/users/3w2t" class="btn">Discord: 3w2t</a>
 </section>
-
-<footer>
-  © جميع الحقوق محفوظة <span>Yohan</span> — 2025
-</footer>
-
-<script>
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
-  });
-}, { threshold: 0.1 });
-sections.forEach(section => observer.observe(section));
-</script>
 
 </body>
 </html>
